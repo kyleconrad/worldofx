@@ -1,11 +1,11 @@
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:
-http_path = "./client/"
+http_path = "./client"
 
 sass_dir = "./client/sass"
 css_dir = "./client/css"
-javascripts_dir = "./client/js"
+javascripts_dir = "./client"
 
 images_dir = "./public/img"
 fonts_dir = "./public/fonts"
