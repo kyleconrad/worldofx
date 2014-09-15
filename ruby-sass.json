@@ -1,0 +1,6 @@
+{
+  "file": "sass/style.scss",
+  "style": "compressed",
+  "compass": true,
+  "noCache": true
+}
