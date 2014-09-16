@@ -35,12 +35,21 @@ $experimental-support-for-khtml: false;
   #{$property}: calc(#{$expression});
 }
 
+$red: #d8232a;
+$red-dark: #b32228;
+$dark: lighten(black,10%);
+
+$twitter: #00aced;
+$facebook: #3b5998;
+
 
 /* ADDITIONAL RESET */
 html {
 	min-height: 100%;
 	height: 100%;
 	-webkit-text-size-adjust: none;
+
+	background: $red-dark;
 }
 body {
 	height: 100%;
@@ -98,6 +107,8 @@ body {
 
 
 /* INCLUDED */
+@import 'base/_zindex.scss';
+
 @import 'base/_grid.scss';
 
 @import 'base/_glyphs.scss';
@@ -108,3 +119,5 @@ body {
 @import 'base/_header.scss';
 @import 'base/_main.scss';
 @import 'base/_footer.scss';
+
+@import 'base/_about.scss';

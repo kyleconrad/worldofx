@@ -1,1 +1,59 @@
 /* GLYPHS */
+#about-link {
+	display: block;
+	float: right;
+	height: 24px;
+	width: 24px;
+	border-radius: 100%;
+	border: 2px solid white;
+	position: relative;
+	text-decoration: none;
+	opacity: 0.5;
+	overflow: hidden;
+	@include transition(0.15s);
+
+	&:before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		color: white;
+		font-family: "tablet-gothic",sans-serif;
+		font-weight: 700;
+		font-size: 0.9em;
+		text-align: center;
+		line-height: 18px;
+		content: '?';
+	}
+
+	&:hover,
+	&:active {
+		opacity: 1;
+	}
+
+
+
+
+	.about-panel-open & {
+		&:before,
+		&:after {
+			position: absolute;
+			width: 120%;
+			height: 2px;
+			top: 50%;
+			left: 50%;
+			background: white;
+			display: block;
+			@include transform-origin(center center);
+		}
+		&:before {
+			@include transform(translate3d(-50%,-50%,0) rotate(45deg));
+			content: '';
+		}
+		&:after {
+			@include transform(translate3d(-50%,-50%,0) rotate(-45deg));
+			content: '';
+		}
+	}
+}

@@ -1,1 +1,19 @@
 /* NAV BAR */
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 45px;
+	display: block;
+	padding: 10px 1.25em;
+
+	img {
+		height: 100%;
+		width: auto;
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+	}
+}

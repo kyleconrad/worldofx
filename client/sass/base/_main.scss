@@ -1,1 +1,22 @@
 /* MAIN AREAS */
+.main-container {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	@include transition(opacity 0.25s);
+	@include transition-delay(0.1s);
+
+	.about-panel-open & {
+		opacity: 0.25;
+		@include transition-delay(0s);
+
+		-ms-pointer-events: none;
+		pointer-events: none;
+		-ms-touch-events: none;
+		touch-events: none;
+	}
+}

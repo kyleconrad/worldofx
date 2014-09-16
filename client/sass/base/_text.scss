@@ -1,1 +1,106 @@
 /* TEXT SETTINGS */
+* {
+    text-rendering: optimizeLegibility;
+    -webkit-font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern=1";
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+}
+
+p {
+	color: black;
+	font-family: "tablet-gothic",sans-serif;
+	font-weight: 500;
+	font-size: 1.1em;
+	line-height: 1.4;
+	margin-bottom: 1.25em;
+
+
+	#about & {
+		color: white;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-size: 1em;
+	}
+}
+
+em {
+	font-style: italic;
+}
+strong {
+	font-weight: 700;
+}
+
+
+
+.credits-text {
+	display: block;
+	border-top: 1px solid rgba(white,0.25);
+	padding-top: 1em;
+	color: rgba(white,0.35);
+	font-size: 0.875em;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: "tablet-gothic",sans-serif;
+	font-weight: 500;
+
+	a {
+		color: rgba(white,0.4);
+		text-decoration: underline;
+
+		&:hover {
+			color: rgba(white,0.6);
+		}
+	}
+}
+
+
+
+.social-link {
+	display: block;
+	margin-bottom: 1em;
+	border: 2px solid white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none;
+	font-family: "tablet-gothic-condensed",sans-serif;
+	font-weight: 700;
+	font-size: 1em;
+	text-align: center;
+	padding: 0.75em 1em;
+	margin-right: 0.25em;
+	@include transform(skewX(-5deg));
+	@include transition(0.15s);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+
+	.social-link-text {
+		display: block;
+		@include transform(skewX(5deg));
+	}
+
+	&.twitter-link {
+		color: $twitter;
+		border-color: $twitter;
+	}
+	&.facebook-link {
+		color: $facebook;
+		border-color: $facebook;
+	}
+
+
+	&:hover {
+		background: white;
+
+		&.twitter-link {
+			color: white;
+			background: $twitter;
+		}
+		&.facebook-link {
+			color: white;
+			background: $facebook;
+		}
+	}
+}

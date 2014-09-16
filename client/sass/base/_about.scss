@@ -1,0 +1,51 @@
+/* ABOUT */
+#about {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: auto;
+	padding: 50px 1.25em 1.5em;
+	background: black;
+	@include transform(translate3d(0,-100%,0) translateY(45px));
+	@include transition(0.5s);
+	@include transition-timing-function(ease);
+	@include transition-delay(0.05s);
+
+	&:after {
+		clear: both;
+		display: block;
+		font-size: 0;
+		line-height: 0;
+		visibility: hidden;
+		width: 0;
+		height: 0;
+		content: '';
+	}
+
+
+	.about-panel-open & {
+		@include transform(translate3d(0,0,0) translateY(0));
+		@include transition-delay(0s);
+	}
+}
+
+.about-text {
+	width: 60%;
+}
+.about-links {
+	width: 40%;
+	padding-left: 18%;
+}
+.about-text,
+.about-links {
+	float: left;
+	opacity: 0;
+	@include transition(0.2s);
+
+
+	.about-panel-open & {
+		opacity: 1;
+		@include transition-delay(0.3s);
+	}
+}
