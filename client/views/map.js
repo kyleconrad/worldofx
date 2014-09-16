@@ -23,9 +23,9 @@ Template.mainLayout.rendered = function() {
 		getTileUrl: function(coord, zoom) {
 			var normalizedCoord = getNormalizedCoord(coord, zoom);
 			if(normalizedCoord && (normalizedCoord.x < Math.pow(2, zoom)) && (normalizedCoord.x > -1) && (normalizedCoord.y < Math.pow(2, zoom)) && (normalizedCoord.y > -1)) {
-				return 'assets/tiles/' + zoom + '/' + normalizedCoord.x + '/' + normalizedCoord.y + '.jpg';
+				return 'img/tiles/' + zoom + '/' + normalizedCoord.x + '/' + normalizedCoord.y + '.jpg';
 			} else {
-				return 'assets/tiles/empty.jpg';
+				return 'img/tiles/empty.jpg';
 			}
 		},
 		tileSize: new google.maps.Size(128, 128),
@@ -50,6 +50,111 @@ Template.mainLayout.rendered = function() {
 	var map = new google.maps.Map(document.getElementById('map'), myOptions);
 	map.mapTypes.set('cerebro', customMapType);
 	map.setMapTypeId('cerebro');
+
+
+
+
+	var allowedBounds = new google.maps.LatLngBounds(
+		new google.maps.LatLng(35, -178),
+		new google.maps.LatLng(80, 10)
+	);
+	var boundLimits = {
+		maxLat: allowedBounds.getNorthEast().lat(),
+		maxLng: allowedBounds.getNorthEast().lng(),
+		minLat: allowedBounds.getSouthWest().lat(),
+		minLng: allowedBounds.getSouthWest().lng()
+	};
+	var lastValidCenter = map.getCenter();
+	var newLat,
+		newLng;
+
+	google.maps.event.addListener(map, 'zoom_changed', function() {
+	    checkBounds();
+	});
+	google.maps.event.addListener(map, 'bounds_changed', function() {
+	    checkBounds();
+	});
+	google.maps.event.addListener(map, 'center_changed', function() {
+		limitBounds(allowedBounds);
+	});
+
+
+
+
+
+	function checkBounds() {
+	    var currentBounds = map.getBounds();
+	    if (currentBounds == null) return;
+
+		var allowed_ne_lng = allowedBounds.getNorthEast().lng(),
+			allowed_ne_lat = allowedBounds.getNorthEast().lat(),
+			allowed_sw_lng = allowedBounds.getSouthWest().lng(),
+			allowed_sw_lat = allowedBounds.getSouthWest().lat();
+
+	    var wrap;
+	    var cc = map.getCenter();
+	    var centerH = false;
+	    var centerV = false;
+
+	    if ( currentBounds.toSpan().lng() > allowedBounds.toSpan().lng() ) {
+	        centerH = true;
+	    }
+	    else {
+	        wrap = currentBounds.getNorthEast().lng() < cc.lng();
+	        var current_ne_lng = !wrap ?   currentBounds.getNorthEast().lng()  : allowed_ne_lng +(currentBounds.getNorthEast().lng() + 180 )  + (180 - allowed_ne_lng);
+	        wrap = currentBounds.getSouthWest().lng() > cc.lng();
+	        var current_sw_lng = !wrap ?  currentBounds.getSouthWest().lng() : allowed_sw_lng - (180-currentBounds.getSouthWest().lng()) - (allowed_sw_lng+180);
+	    }
+
+	    if ( currentBounds.toSpan().lat() > allowedBounds.toSpan().lat() ) {
+	        centerV = true;
+	    }
+	    else {
+			wrap = currentBounds.getNorthEast().lat()   < cc.lat();    if (wrap) { alert("WRAp detected top") }
+			var current_ne_lat =  !wrap ? currentBounds.getNorthEast().lat()  : allowed_ne_lat + (currentBounds.getNorthEast().lat() +90) + (90 - allowed_ne_lat);
+			wrap = currentBounds.getSouthWest().lat() > cc.lat();  if (wrap) { alert("WRAp detected btm") }
+			var current_sw_lat = !wrap ?  currentBounds.getSouthWest().lat() : allowed_sw_lat - (90-currentBounds.getSouthWest().lat()) - (allowed_sw_lat+90);
+	    }
+
+	    var centerX = cc.lng(),
+	    	centerY = cc.lat();
+		if (!centerH) {
+			if (current_ne_lng > allowed_ne_lng) centerX -= current_ne_lng-allowed_ne_lng;
+			if (current_sw_lng < allowed_sw_lng) centerX += allowed_sw_lng-current_sw_lng;
+		}
+		else {
+			centerX = allowedBounds.getCenter().lng();
+		}
+
+		if (!centerV) {
+			if (current_ne_lat > allowed_ne_lat) {
+		   		centerY -= (current_ne_lat - allowed_ne_lat) * 3;
+			}
+			if (current_sw_lat < allowed_sw_lat) {
+		   		centerY += (allowed_sw_lat - current_sw_lat) * 2.8;
+			}
+		}
+		else {
+			centerY = allowedBounds.getCenter().lat();
+		}
+
+		map.setCenter(lastValidCenter = new google.maps.LatLng(centerY,centerX));
+	}
+
+	function limitBounds(bound) {
+		var mapBounds = map.getBounds();
+
+		if (mapBounds.getNorthEast().lng() >= mapBounds.getSouthWest().lng() && mapBounds.getNorthEast().lat()  >= mapBounds.getSouthWest().lat()
+			&& bound.getNorthEast().lat() > mapBounds.getNorthEast().lat()
+			&& bound.getNorthEast().lng() > mapBounds.getNorthEast().lng()
+			&& bound.getSouthWest().lat() < mapBounds.getSouthWest().lat()
+			&& bound.getSouthWest().lng() < mapBounds.getSouthWest().lng()) {
+		    lastValidCenter = map.getCenter();
+		    return;
+		}
+
+		map.panTo(lastValidCenter);
+	}
 };
 
 

@@ -4,9 +4,11 @@
 		{{> nav}}
 
 		<section class="main-container">
-			{{#constant}}
-				<div id="map"></div>
-			{{/constant}}
+			<div id="map-controls">
+				<a href="#" id="map-zoomin" class="map-control-btn"></a>
+				<a href="#" id="map-zoomout" class="map-control-btn"></a>
+			</div>
+			<div id="map"></div>
 		</section>
 
 		{{> about}}
