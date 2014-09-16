@@ -72,24 +72,8 @@
 	overflow: hidden;
 	@include transition(opacity 0.15s);
 
-	&#map-zoomin,
-	&#map-zoomout {
-		&:before {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 12px;
-			height: 2px;
-			display: block;
-			background: white;
-			opacity: 1;
-			@include transform-origin(center center);
-			@include transform(translate3d(-50%,-50%,0));
-			content: '';
-		}
-	}
 	&#map-zoomin {
-		&:after {
+		&:before {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -103,7 +87,22 @@
 			content: '';
 		}
 	}
-
+	&#map-zoomin,
+	&#map-zoomout {
+		&:after {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 12px;
+			height: 2px;
+			display: block;
+			background: white;
+			opacity: 1;
+			@include transform-origin(center center);
+			@include transform(translate3d(-50%,-50%,0));
+			content: '';
+		}
+	}
 
 	&:hover,
 	&:active {

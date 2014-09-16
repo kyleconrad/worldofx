@@ -25,7 +25,7 @@ Template.mainLayout.rendered = function() {
 			if(normalizedCoord && (normalizedCoord.x < Math.pow(2, zoom)) && (normalizedCoord.x > -1) && (normalizedCoord.y < Math.pow(2, zoom)) && (normalizedCoord.y > -1)) {
 				return 'img/tiles/' + zoom + '/' + normalizedCoord.x + '/' + normalizedCoord.y + '.jpg';
 			} else {
-				return 'img/tiles/empty.jpg';
+				return 'img/empty.jpg';
 			}
 		},
 		tileSize: new google.maps.Size(128, 128),
