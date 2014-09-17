@@ -1,5 +1,11 @@
 repeatOnXAxis = true;
 
+Template.mainLayout.helpers({
+	locations: function(){
+		return Locations.find();
+	}
+});
+
 Template.mainLayout.rendered = function() {
 	// BASIC MAP SETUP
 	var minViewZoom = 4,
@@ -84,12 +90,12 @@ Template.mainLayout.rendered = function() {
         scale: .075
     }
 
-    var marker = new google.maps.Marker({
-	    position: new google.maps.LatLng(centerLat, centerLng),
-	    map: map,
-	    draggable: false,
-	    icon: icon
-	});
+ //    var marker = new google.maps.Marker({
+	//     position: new google.maps.LatLng(centerLat, centerLng),
+	//     map: map,
+	//     draggable: false,
+	//     icon: icon
+	// });
 
 
 
