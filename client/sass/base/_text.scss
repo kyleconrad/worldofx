@@ -75,8 +75,8 @@ strong {
 	@include transition-delay(0s);
 
 	&.hover {
-		@include transition(max-width 0.85s);
-		@include transition-delay(0.185s);
+		@include transition(max-width 0.95s);
+		@include transition-delay(0.165s);
 		color: white;
 		max-width: 100%;
 	}
