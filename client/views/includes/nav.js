@@ -7,5 +7,5 @@ Template.nav.events = {
 };
 
 Template.nav.rendered = function() {
-	Meteor.widowControl();
+	
 };

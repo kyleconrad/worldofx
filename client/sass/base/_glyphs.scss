@@ -59,6 +59,8 @@
 }
 
 
+
+
 .map-control-btn {
 	display: block;
 	height: 24px;
@@ -67,45 +69,52 @@
 	border: 2px solid white;
 	position: relative;
 	text-decoration: none;
-	opacity: 0.6;
 	margin-bottom: 0.5em;
-	overflow: hidden;
-	@include transition(opacity 0.15s);
-
-	&#map-zoomin {
-		&:before {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 2px;
-			height: 12px;
-			display: block;
-			background: white;
-			opacity: 1;
-			@include transform-origin(center center);
-			@include transform(translate3d(-50%,-50%,0));
-			content: '';
-		}
-	}
-	&#map-zoomin,
-	&#map-zoomout {
-		&:after {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 12px;
-			height: 2px;
-			display: block;
-			background: white;
-			opacity: 1;
-			@include transform-origin(center center);
-			@include transform(translate3d(-50%,-50%,0));
-			content: '';
-		}
-	}
+	opacity: 0.65;
+	@include transition(0.15s);
 
 	&:hover,
 	&:active {
 		opacity: 1;
+	}
+
+
+	&.disabled {
+		opacity: 0.3;
+
+		&:hover,
+		&:active {
+			opacity: 0.3;
+		}
+	}
+}
+
+#map-zoomin {
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 2px;
+		height: 12px;
+		display: block;
+		background: white;
+		@include transform-origin(center center);
+		@include transform(translate3d(-50%,-50%,0));
+		content: '';
+	}
+}
+#map-zoomin,
+#map-zoomout {
+	&:after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 12px;
+		height: 2px;
+		display: block;
+		background: white;
+		@include transform-origin(center center);
+		@include transform(translate3d(-50%,-50%,0));
+		content: '';
 	}
 }

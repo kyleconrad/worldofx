@@ -7,19 +7,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: $red-dark;
-	@include transition(opacity 0.25s);
-	@include transition-delay(0.1s);
-
-	.about-panel-open & {
-		opacity: 0.25;
-		@include transition-delay(0s);
-
-		-ms-pointer-events: none;
-		pointer-events: none;
-		-ms-touch-events: none;
-		touch-events: none;
-	}
+	background: $red-darkest;
 }
 
 #map {

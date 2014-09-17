@@ -23,7 +23,7 @@ Template.mainLayout.rendered = function() {
 		getTileUrl: function(coord, zoom) {
 			var normalizedCoord = getNormalizedCoord(coord, zoom);
 			if(normalizedCoord && (normalizedCoord.x < Math.pow(2, zoom)) && (normalizedCoord.x > -1) && (normalizedCoord.y < Math.pow(2, zoom)) && (normalizedCoord.y > -1)) {
-				return 'img/tiles/' + zoom + '/' + normalizedCoord.x + '/' + normalizedCoord.y + '.jpg';
+				return 'http://cdn.world-of-x.com/tiles/' + zoom + '/' + normalizedCoord.x + '/' + normalizedCoord.y + '.jpg';
 			} else {
 				return 'img/empty.jpg';
 			}
@@ -54,6 +54,26 @@ Template.mainLayout.rendered = function() {
 
 
 
+	var zoomIn = document.getElementById('map-zoomin'),
+		zoomOut = document.getElementById('map-zoomout');
+
+	google.maps.event.addDomListener(zoomIn, 'click', function() {
+		var currentZoomLevel = map.getZoom();
+
+   		if (currentZoomLevel != maxViewZoom) {
+    		map.setZoom(currentZoomLevel + 1);
+    	}
+	});
+	google.maps.event.addDomListener(zoomOut, 'click', function() {
+		var currentZoomLevel = map.getZoom();
+
+   		if (currentZoomLevel != minViewZoom) {
+    		map.setZoom(currentZoomLevel - 1);
+    	}
+	});
+
+
+
 	var allowedBounds = new google.maps.LatLngBounds(
 		new google.maps.LatLng(35, -178),
 		new google.maps.LatLng(80, 10)
@@ -70,6 +90,20 @@ Template.mainLayout.rendered = function() {
 
 	google.maps.event.addListener(map, 'zoom_changed', function() {
 	    checkBounds();
+
+
+	    var currentZoomLevel = map.getZoom();
+
+	    if (currentZoomLevel >= maxViewZoom) {
+    		zoomIn.classList.add('disabled');
+    	}
+    	if (currentZoomLevel <= minViewZoom) {
+    		zoomOut.classList.add('disabled');
+    	}
+    	if (currentZoomLevel < maxViewZoom && currentZoomLevel > minViewZoom) {
+			zoomIn.classList.remove('disabled');
+    		zoomOut.classList.remove('disabled');
+    	}
 	});
 	google.maps.event.addListener(map, 'bounds_changed', function() {
 	    checkBounds();
@@ -77,9 +111,6 @@ Template.mainLayout.rendered = function() {
 	google.maps.event.addListener(map, 'center_changed', function() {
 		limitBounds(allowedBounds);
 	});
-
-
-
 
 
 	function checkBounds() {

@@ -49,3 +49,28 @@
 		@include transition-delay(0.3s);
 	}
 }
+
+
+#about-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	background: white;
+	opacity: 0;
+	@include transition(opacity 0.25s);
+	@include transition-delay(0.2s);
+	@include transform(translate3d(0,0,0));
+
+	-ms-pointer-events: none;
+	pointer-events: none;
+
+	.about-panel-open & {
+		opacity: 0.6;
+		@include transition-delay(0s);
+
+		-ms-pointer-events: auto;
+		pointer-events: auto;
+	}
+}
