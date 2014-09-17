@@ -89,8 +89,18 @@ Template.mainLayout.rendered = function() {
         fillColor: '#FFFFFF',
         fillOpacity: 1,
         strokeWeight: 0,
+        origin: new google.maps.Point(276, 1450),
         anchor: new google.maps.Point(276, 1450),
         scale: .075
+    }
+    var iconhover = {
+        path: "M465.955385,1085.33771 C465.955385,974.693835 376.421538,885 265.978462,885 C155.533846,885 66,974.693835 66,1085.33771 C66,1171.88588 120.786154,1245.61249 197.509231,1273.6214 L216.703077,1332.01425 L265.978462,1482.26945 L315.252308,1332.01425 L334.452308,1273.61831 C411.172308,1245.60941 465.955385,1171.88434 465.955385,1085.33771 L465.955385,1085.33771 Z M265.978462,949.194067 C290.630769,949.194067 314.278462,955.731995 334.958462,967.980206 L265.315385,1037.74893 L196.161538,968.47032 C217.038462,955.903072 240.993846,949.194067 265.978462,949.194067 L265.978462,949.194067 Z M217.812308,1085.33771 L148.832308,1154.44215 C136.606154,1133.72485 130.08,1110.03449 130.08,1085.33771 C130.08,1060.63938 136.606154,1036.94903 148.832308,1016.23172 L217.812308,1085.33771 L217.812308,1085.33771 Z M265.315385,1132.92648 L334.958462,1202.69521 C314.278462,1214.94188 290.630769,1221.48135 265.978462,1221.48135 C240.993846,1221.48135 217.038462,1214.7708 196.161538,1202.20355 L265.315385,1132.92648 L265.315385,1132.92648 Z M312.818462,1085.33771 L382.635385,1015.39637 C395.178462,1036.30941 401.876923,1060.30802 401.876923,1085.33771 C401.876923,1110.3674 395.178462,1134.36446 382.633846,1155.27905 L312.818462,1085.33771 L312.818462,1085.33771 Z",
+        fillColor: '#FFFFFF',
+        fillOpacity: 1,
+        strokeWeight: 0,
+        origin: new google.maps.Point(276, 1450),
+        anchor: new google.maps.Point(276, 1450),
+        scale: .085
     }
 
  //    var marker = new google.maps.Marker({
@@ -119,16 +129,35 @@ Template.mainLayout.rendered = function() {
 
 	function addMarker(marker) {
 		var gLatLng = new google.maps.LatLng(marker.lat, marker.lng);
-        var gMarker = new google.maps.Marker({
+        // var gMarker = new google.maps.Marker({
+        var gMarker = new MarkerWithLabel({
+        		id: marker.id,
 	            position: gLatLng,
 	            map: map,
 	            draggable: false,
-	            icon: icon
+	            icon: icon,
+	            labelContent: marker.id,
+				labelAnchor: new google.maps.Point(-24, 40),
+				labelClass: "map-label"
 	        });
 
         latLngs.push(gLatLng);
         markers.push(gMarker);
         markerData.push(marker);
+
+		google.maps.event.addListener(gMarker, 'click', function() {
+			// DO STUFF ON CLICK HERE
+		});
+		google.maps.event.addListener(gMarker, 'mouseover', function() {
+			// DO STUFF ON HOVER
+			gMarker.set('labelClass', 'map-label hover');
+			gMarker.setIcon(iconhover);
+		});
+		google.maps.event.addListener(gMarker, 'mouseout', function() {
+			// DO STUFF ON HOVER AWAY
+			gMarker.set('labelClass', 'map-label');
+			gMarker.setIcon(icon);
+		});
         return gMarker;
 	}
 	function markerExists(key, val) {

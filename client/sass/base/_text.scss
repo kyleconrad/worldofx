@@ -59,6 +59,30 @@ strong {
 }
 
 
+.map-label {
+	color: white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-transform: uppercase;
+	font-family: "tablet-gothic-condensed",sans-serif;
+	font-weight: 700;
+	font-size: 1.5em;
+	text-align: left;
+	opacity: 1;
+	max-width: 0;
+	overflow: hidden;
+	@include transition(max-width 0s);
+	@include transition-delay(0s);
+
+	&.hover {
+		@include transition(max-width 1s);
+		@include transition-delay(0.2s);
+		color: white;
+		max-width: 100%;
+	}
+}
+
+
 .credits-text {
 	display: block;
 	border-top: 1px solid rgba(white,0.25);
