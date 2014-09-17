@@ -1,12 +1,12 @@
 repeatOnXAxis = true;
 
 Template.mainLayout.rendered = function() {
+	// BASIC MAP SETUP
 	var minViewZoom = 4,
 		maxViewZoom = 7;
 	var centerLat = 68,
 		centerLng = -93;
 
-	// screen size dependent variables
 	if (isPhone) {
 	}
 	if (biggerThanPhone && !biggerThanPortrait) {
@@ -17,7 +17,6 @@ Template.mainLayout.rendered = function() {
 	}
 	if (biggestScreen) {
 	}
-
 
 	var customMapType = new google.maps.ImageMapType({
 		getTileUrl: function(coord, zoom) {
@@ -46,7 +45,6 @@ Template.mainLayout.rendered = function() {
 		disableDoubleClickZoom: true
 	};
 
-
 	var map = new google.maps.Map(document.getElementById('map'), myOptions);
 	map.mapTypes.set('cerebro', customMapType);
 	map.setMapTypeId('cerebro');
@@ -54,6 +52,7 @@ Template.mainLayout.rendered = function() {
 
 
 
+	// ZOOM BUTTONS
 	var zoomIn = document.getElementById('map-zoomin'),
 		zoomOut = document.getElementById('map-zoomout');
 
@@ -74,6 +73,28 @@ Template.mainLayout.rendered = function() {
 
 
 
+
+	// MAP MARKERS
+	var icon = {
+        path: "M465.955385,1085.33771 C465.955385,974.693835 376.421538,885 265.978462,885 C155.533846,885 66,974.693835 66,1085.33771 C66,1171.88588 120.786154,1245.61249 197.509231,1273.6214 L216.703077,1332.01425 L265.978462,1482.26945 L315.252308,1332.01425 L334.452308,1273.61831 C411.172308,1245.60941 465.955385,1171.88434 465.955385,1085.33771 L465.955385,1085.33771 Z M265.978462,949.194067 C290.630769,949.194067 314.278462,955.731995 334.958462,967.980206 L265.315385,1037.74893 L196.161538,968.47032 C217.038462,955.903072 240.993846,949.194067 265.978462,949.194067 L265.978462,949.194067 Z M217.812308,1085.33771 L148.832308,1154.44215 C136.606154,1133.72485 130.08,1110.03449 130.08,1085.33771 C130.08,1060.63938 136.606154,1036.94903 148.832308,1016.23172 L217.812308,1085.33771 L217.812308,1085.33771 Z M265.315385,1132.92648 L334.958462,1202.69521 C314.278462,1214.94188 290.630769,1221.48135 265.978462,1221.48135 C240.993846,1221.48135 217.038462,1214.7708 196.161538,1202.20355 L265.315385,1132.92648 L265.315385,1132.92648 Z M312.818462,1085.33771 L382.635385,1015.39637 C395.178462,1036.30941 401.876923,1060.30802 401.876923,1085.33771 C401.876923,1110.3674 395.178462,1134.36446 382.633846,1155.27905 L312.818462,1085.33771 L312.818462,1085.33771 Z",
+        fillColor: '#FFFFFF',
+        fillOpacity: 1,
+        strokeWeight: 0,
+        anchor: new google.maps.Point(276, 1450),
+        scale: .075
+    }
+
+    var marker = new google.maps.Marker({
+	    position: new google.maps.LatLng(centerLat, centerLng),
+	    map: map,
+	    draggable: false,
+	    icon: icon
+	});
+
+
+
+
+	// BOUNDARY CHECKING
 	var allowedBounds = new google.maps.LatLngBounds(
 		new google.maps.LatLng(35, -178),
 		new google.maps.LatLng(80, 10)
@@ -91,7 +112,7 @@ Template.mainLayout.rendered = function() {
 	google.maps.event.addListener(map, 'zoom_changed', function() {
 	    checkBounds();
 
-
+	    // CHECK ZOOM LEVEL FOR BUTTONS
 	    var currentZoomLevel = map.getZoom();
 
 	    if (currentZoomLevel >= maxViewZoom) {
@@ -111,7 +132,6 @@ Template.mainLayout.rendered = function() {
 	google.maps.event.addListener(map, 'center_changed', function() {
 		limitBounds(allowedBounds);
 	});
-
 
 	function checkBounds() {
 	    var currentBounds = map.getBounds();

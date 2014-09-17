@@ -31,6 +31,9 @@
 	}
 
 
+	@include breakpoint(large) {
+		font-size: 1.2rem;
+	}
 	@include breakpoint(portrait) {
 		font-size: 0.9rem;
 	}

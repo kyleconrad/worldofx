@@ -8,6 +8,32 @@
     font-kerning: normal;
 }
 
+h3 {
+	color: black;
+	text-transform: uppercase;
+	font-family: "tablet-gothic-condensed",sans-serif;
+	font-weight: 700;
+	font-size: 1.65em;
+	margin-bottom: 0.2em;
+	padding-top: 0.25em;
+}
+h4 {
+	color: white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-transform: uppercase;
+	font-family: "tablet-gothic-condensed",sans-serif;
+	font-weight: 700;
+	font-size: 1.25em;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	margin-bottom: 1.25em;
+	padding-bottom: 0.35em;
+	border-bottom: 1px solid rgba(white,0.25);
+	display: block;
+	width: 100%;
+}
 p {
 	color: black;
 	font-family: "tablet-gothic",sans-serif;
@@ -31,7 +57,6 @@ em {
 strong {
 	font-weight: 700;
 }
-
 
 
 .credits-text {
