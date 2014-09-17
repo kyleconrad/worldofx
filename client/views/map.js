@@ -103,7 +103,7 @@ Template.mainLayout.rendered = function() {
         scale: .085
     }
 
- //    var marker = new google.maps.Marker({
+ 	// var marker = new google.maps.Marker({
 	//     position: new google.maps.LatLng(centerLat, centerLng),
 	//     map: map,
 	//     draggable: false,
