@@ -1,5 +1,6 @@
 /* ABOUT */
 #about {
+	font-size: 1rem;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -28,6 +29,11 @@
 		@include transform(translate3d(0,0,0) translateY(0));
 		@include transition-delay(0s);
 	}
+
+
+	@include breakpoint(portrait) {
+		font-size: 0.9rem;
+	}
 }
 
 .about-text {
@@ -36,6 +42,14 @@
 .about-links {
 	width: 40%;
 	padding-left: 18%;
+
+
+	@include breakpoint(landscape) {
+		padding-left: 13%;
+	}
+	@include breakpoint(portrait) {
+		padding-left: 10%;
+	}
 }
 .about-text,
 .about-links {
