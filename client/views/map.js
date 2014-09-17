@@ -12,6 +12,9 @@ Template.mainLayout.rendered = function() {
 		maxViewZoom = 7;
 	var centerLat = 68,
 		centerLng = -93;
+	var markers = [],
+		latLngs = [],
+		markerData = [];
 
 	if (isPhone) {
 	}
@@ -96,7 +99,45 @@ Template.mainLayout.rendered = function() {
 	//     draggable: false,
 	//     icon: icon
 	// });
+	Deps.autorun(function() {
+		var locations = Locations.find().fetch();
 
+		_.each(locations, function(location) {
+			if (typeof location.latitude !== 'undefined' && typeof location.longitude !== 'undefined') {
+				var objMarker = {
+                    id: location.slug,
+                    lat: location.latitude,
+                    lng: location.longitude
+                };
+
+                if (!markerExists('id', objMarker.id)) {
+                	addMarker(objMarker);
+                }
+			}
+		});
+	});
+
+	function addMarker(marker) {
+		var gLatLng = new google.maps.LatLng(marker.lat, marker.lng);
+        var gMarker = new google.maps.Marker({
+	            position: gLatLng,
+	            map: map,
+	            draggable: false,
+	            icon: icon
+	        });
+
+        latLngs.push(gLatLng);
+        markers.push(gMarker);
+        markerData.push(marker);
+        return gMarker;
+	}
+	function markerExists(key, val) {
+        _.each(this.markers, function(storedMarker) {
+            if (storedMarker[key] == val)
+                return true;
+        });
+        return false;
+    }
 
 
 
