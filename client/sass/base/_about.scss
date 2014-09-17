@@ -34,10 +34,20 @@
 	@include breakpoint(portrait) {
 		font-size: 0.9rem;
 	}
+	@include breakpoint(mobile) {
+		font-size: 0.8rem;
+		height: 100%;
+		overflow-y: scroll;
+	}
 }
 
 .about-text {
 	width: 60%;
+
+	@include breakpoint(mobile) {
+		width: 100%;
+		padding-bottom: 2em;
+	}
 }
 .about-links {
 	width: 40%;
@@ -49,6 +59,10 @@
 	}
 	@include breakpoint(portrait) {
 		padding-left: 10%;
+	}
+	@include breakpoint(mobile) {
+		width: 100%;
+		padding-left: 0;
 	}
 }
 .about-text,

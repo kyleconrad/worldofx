@@ -16,4 +16,9 @@ nav {
 		margin: 0;
 		padding: 0;
 	}
+
+
+	@include breakpoint(mobile) {
+		background: black;
+	}
 }
