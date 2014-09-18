@@ -9,6 +9,7 @@ Template.infobox.helpers({
 Template.infobox.rendered = function() {
 	// Meteor.widowControl();
 
-	console.log(this);
+	locations = Locations.find().fetch();
+    console.log(locations);
 };
 
