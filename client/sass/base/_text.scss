@@ -160,3 +160,18 @@ strong {
 		}
 	}
 }
+
+
+.backlink {
+	color: black;
+	text-transform: uppercase;
+	font-family: "tablet-gothic-condensed",sans-serif;
+	font-weight: 700;
+	text-decoration: none;
+	font-size: 1em;
+	opacity: 0.35;
+
+	&:hover {
+		opacity: 1;
+	}
+}

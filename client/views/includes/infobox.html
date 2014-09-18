@@ -1,7 +1,27 @@
 <template name="infobox">
 	<section id="infobox">
-		{{slug}}
-		{{place}}
-		{{subtitle}}
+		<div class="location-image" style="background-image: url('img/locations/{{slug}}.jpg');"></div>
+
+		<div class="location-info">
+			<div class="scroll-container">
+				<a href="#" id="backlink" class="backlink home-link">Back To Map</a>
+
+				<span class="location-title">
+					<h1><img src="img/titles/title-{{slug}}.svg" class="title-image" alt="{{title}}"></h1>
+					<h2><img src="img/titles/location-{{slug}}.svg" class="subtitle-image" alt="{{subtitle}}"></h2>
+				</span>
+				
+				{{slug}}
+				{{title}}
+				{{subtitle}}
+				{{{content}}}
+
+				<div class="series-listing">
+					<h4>Related Series</h4>
+
+					<div class="series-listing-slant"></div>
+				</div>
+			</div>
+		</div>
 	</section>
 </template>

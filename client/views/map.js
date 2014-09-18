@@ -176,11 +176,15 @@ Template.mainLayout.rendered = function() {
 				map.setZoom(i);
 
 				if (i < maxViewZoom) i+=1;
-				else clearInterval(interval);
-			}
-			interval = setInterval(mapZoomIn, 900);
+				else {
+					clearInterval(interval);
 
-			// Router.go('/' + gMarker.id);
+					setTimeout(function(){
+						Router.go('/' + gMarker.id);
+					}, 1250);
+				}
+			}
+			interval = setInterval(mapZoomIn, 750);
 		});
 		google.maps.event.addListener(gMarker, 'mouseover', function() {
 			// DO STUFF ON HOVER
