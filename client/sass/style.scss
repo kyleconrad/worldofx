@@ -15,7 +15,10 @@ $experimental-support-for-khtml: false;
 
 /* MIX-INS */
 @mixin breakpoint($point) {
-	@if $point == large {
+	@if $point == xxlarge {
+		@media only screen and (min-width : 2000px) { @content; }
+	}
+	@else if $point == large {
 		@media only screen and (min-width : 1401px) { @content; }
 	}
 	@else if $point == landscape {

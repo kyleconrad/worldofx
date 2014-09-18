@@ -72,13 +72,17 @@ strong {
 	max-width: 0;
 	white-space: nowrap;
 	overflow: hidden;
-	@include text-shadow(0 0 3px black);
-	@include transition(max-width 0s);
+	background: black;
+	padding: 4px 7px 5px;
+	opacity: 0;
+	position: relative;
+	@include transition(max-width 0s, opacity 0s);
 	@include transition-delay(0s);
 
 	&.hover {
-		@include transition(max-width 0.95s);
-		@include transition-delay(0.165s);
+		opacity: 1;
+		@include transition(max-width 0.95s, opacity 0.1s);
+		@include transition-delay(max-width 0.165s, opacity 0.175s);
 		color: white;
 		max-width: 100%;
 	}

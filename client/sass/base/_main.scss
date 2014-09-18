@@ -16,20 +16,10 @@
 	height: calc(100% - 40px);
 	margin-top: 40px;
 	position: relative;
-
-	&.panning {
-		-ms-pointer-events: none;
-		pointer-events: none;
-	}
 }
 #map-controls {
 	position: absolute;
 	top: 1.25em;
 	top: calc(1.25em + 40px);
 	right: 1.25em;
-
-	&.panning {
-		-ms-pointer-events: none;
-		pointer-events: none;
-	}
 }
