@@ -79,6 +79,21 @@ Template.mainLayout.rendered = function() {
     		map.setZoom(currentZoomLevel - 1);
     	}
 	});
+	google.maps.event.addListener(map, 'zoom_changed', function() {
+	    // CHECK ZOOM LEVEL FOR BUTTONS
+	    var currentZoomLevel = map.getZoom();
+
+	    if (currentZoomLevel >= maxViewZoom) {
+    		zoomIn.classList.add('disabled');
+    	}
+    	if (currentZoomLevel <= minViewZoom) {
+    		zoomOut.classList.add('disabled');
+    	}
+    	if (currentZoomLevel < maxViewZoom && currentZoomLevel > minViewZoom) {
+			zoomIn.classList.remove('disabled');
+    		zoomOut.classList.remove('disabled');
+    	}
+	});
 
 
 
@@ -147,6 +162,7 @@ Template.mainLayout.rendered = function() {
 
 		google.maps.event.addListener(gMarker, 'click', function() {
 			// DO STUFF ON CLICK HERE
+			// Router.go('/' + gMarker.id);
 		});
 		google.maps.event.addListener(gMarker, 'mouseover', function() {
 			// DO STUFF ON HOVER
@@ -185,29 +201,24 @@ Template.mainLayout.rendered = function() {
 	var newLat,
 		newLng;
 
-	google.maps.event.addListener(map, 'zoom_changed', function() {
-	    checkBounds();
+	startChecks();
 
-	    // CHECK ZOOM LEVEL FOR BUTTONS
-	    var currentZoomLevel = map.getZoom();
-
-	    if (currentZoomLevel >= maxViewZoom) {
-    		zoomIn.classList.add('disabled');
-    	}
-    	if (currentZoomLevel <= minViewZoom) {
-    		zoomOut.classList.add('disabled');
-    	}
-    	if (currentZoomLevel < maxViewZoom && currentZoomLevel > minViewZoom) {
-			zoomIn.classList.remove('disabled');
-    		zoomOut.classList.remove('disabled');
-    	}
-	});
-	google.maps.event.addListener(map, 'bounds_changed', function() {
-	    checkBounds();
-	});
-	google.maps.event.addListener(map, 'center_changed', function() {
-		limitBounds(allowedBounds);
-	});
+	function startChecks() {
+		var zoomCheck = google.maps.event.addListener(map, 'zoom_changed', function() {
+		    checkBounds();
+		});
+		var boundsCheck = google.maps.event.addListener(map, 'bounds_changed', function() {
+		    checkBounds();
+		});
+		var centerCheck = google.maps.event.addListener(map, 'center_changed', function() {
+			limitBounds(allowedBounds);
+		});
+	}
+	function stopChecks() {
+		google.maps.event.removeListener(zoomCheck);
+		google.maps.event.removeListener(boundsCheck);
+		google.maps.event.removeListener(centerCheck);
+	}
 
 	function checkBounds() {
 	    var currentBounds = map.getBounds();
