@@ -1,8 +1,11 @@
 /* Z-INDEX SETTINGS */
+#loading {
+	z-index: 999;
+}
+
 nav {
 	z-index: 99;
 }
-
 
 #about {
 	z-index: 98;
