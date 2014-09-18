@@ -70,7 +70,9 @@ strong {
 	text-align: left;
 	opacity: 1;
 	max-width: 0;
+	white-space: nowrap;
 	overflow: hidden;
+	@include text-shadow(0 0 3px black);
 	@include transition(max-width 0s);
 	@include transition-delay(0s);
 
