@@ -1,0 +1,1 @@
+Comics = new Meteor.Collection('comics');
