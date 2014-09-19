@@ -8,10 +8,10 @@ Template.mainLayout.helpers({
 
 Template.mainLayout.rendered = function() {
 	// BASIC MAP SETUP
-	var minViewZoom = 4,
-		maxViewZoom = 7;
-	var centerLat = 68,
-		centerLng = -93;
+	minViewZoom = 4,
+	maxViewZoom = 7;
+	centerLat = 68,
+	centerLng = -93;
 	var markers = [],
 		latLngs = [],
 		markerData = [];
@@ -54,7 +54,7 @@ Template.mainLayout.rendered = function() {
 		disableDoubleClickZoom: true
 	};
 
-	var map = new google.maps.Map(document.getElementById('map'), myOptions);
+	map = new google.maps.Map(document.getElementById('map'), myOptions);
 	map.mapTypes.set('cerebro', customMapType);
 	map.setMapTypeId('cerebro');
 
@@ -181,6 +181,18 @@ Template.mainLayout.rendered = function() {
 
 					setTimeout(function(){
 						Router.go('/' + gMarker.id);
+
+						setTimeout(function(){
+							google.maps.event.addListener(map, 'zoom_changed', function() {
+							    checkBounds();
+							});
+							google.maps.event.addListener(map, 'bounds_changed', function() {
+							    checkBounds();
+							});
+							google.maps.event.addListener(map, 'center_changed', function() {
+								limitBounds(allowedBounds);
+							});
+						}, 3500);
 					}, 1250);
 				}
 			}
@@ -227,30 +239,16 @@ Template.mainLayout.rendered = function() {
 	var newLat,
 		newLng;
 
-	var zoomCheck = google.maps.event.addListener(map, 'zoom_changed', function() {
+	zoomCheck = google.maps.event.addListener(map, 'zoom_changed', function() {
 	    checkBounds();
 	});
-	var boundsCheck = google.maps.event.addListener(map, 'bounds_changed', function() {
+	boundsCheck = google.maps.event.addListener(map, 'bounds_changed', function() {
 	    checkBounds();
 	});
-	var centerCheck = google.maps.event.addListener(map, 'center_changed', function() {
+	centerCheck = google.maps.event.addListener(map, 'center_changed', function() {
 		limitBounds(allowedBounds);
 	});
 
-	function startChecks() {
-		// var zoomCheck = google.maps.event.addListener(map, 'zoom_changed', function() {
-		//     checkBounds();
-		// });
-		// var boundsCheck = google.maps.event.addListener(map, 'bounds_changed', function() {
-		//     checkBounds();
-		// });
-		// var centerCheck = google.maps.event.addListener(map, 'center_changed', function() {
-		// 	limitBounds(allowedBounds);
-		// });
-		google.maps.event.addListener(zoomCheck);
-		google.maps.event.addListener(boundsCheck);
-		google.maps.event.addListener(centerCheck);
-	}
 	function stopChecks() {
 		google.maps.event.removeListener(zoomCheck);
 		google.maps.event.removeListener(boundsCheck);
