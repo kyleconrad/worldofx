@@ -1,0 +1,22 @@
+.scroll-container::-webkit-scrollbar {
+	display: none;
+}
+
+.nano-pane {
+	background : rgba(0,0,0,.1);
+	position   : absolute;
+	width      : 8px;
+	right      : 4px;
+	top        : 15px;
+	bottom     : 15px;
+	overflow: hidden;
+	@include transition(0.15s);
+	border-radius: 4px;
+	opacity: 1;
+}
+.nano-pane > .nano-slider {
+	background: rgba(0,0,0,.5);
+	position              : relative;
+	margin                : 0;
+	border-radius: 4px;
+}
