@@ -199,8 +199,8 @@
 // 	&.zooming {
 // 		opacity: 1;
 // 		@include transform(translate(-50%,-50%) rotate(45deg) scale(1));
-// 		@include transition-delay(z-index 0, opacity 0.1s, scale 0.1s);
-// 		@include transition(z-index 0, opacity 0.5s, scale 0.5s);
+// 		@include transition-delay(z-index 0, opacity 0.1s, transform 0.1s);
+// 		@include transition(z-index 0, opacity 0.5s, transform 0.5s);
 // 	}
 // }
 
