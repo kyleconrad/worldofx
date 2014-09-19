@@ -8,13 +8,14 @@ Template.mainLayout.helpers({
 
 Template.mainLayout.rendered = function() {
 	// BASIC MAP SETUP
-	minViewZoom = 4,
-	maxViewZoom = 7;
-	centerLat = 68,
-	centerLng = -93;
+	var minViewZoom = 4,
+		maxViewZoom = 7;
+	var centerLat = 68,
+		centerLng = -93;
 	var markers = [],
 		latLngs = [],
 		markerData = [];
+	var disableListener = false;
 
 	if (isPhone) {
 	}
@@ -169,13 +170,17 @@ Template.mainLayout.rendered = function() {
 			// DO STUFF ON CLICK HERE
 			var currentZoomLevel = map.getZoom();
 
-			stopChecks();
+			disableListener = true;
+			console.log(disableListener);
 			map.panTo(gMarker.position);
 
 			var interval,
 				i = currentZoomLevel + 1;
+
 			function mapZoomIn() {
 				map.setZoom(i);
+
+				$('#reticle').addClass('zooming');
 
 				if (i < maxViewZoom) i+=1;
 				else {
@@ -185,15 +190,9 @@ Template.mainLayout.rendered = function() {
 						Router.go('/' + gMarker.id);
 
 						setTimeout(function(){
-							google.maps.event.addListener(map, 'zoom_changed', function() {
-							    checkBounds();
-							});
-							google.maps.event.addListener(map, 'bounds_changed', function() {
-							    checkBounds();
-							});
-							google.maps.event.addListener(map, 'center_changed', function() {
-								limitBounds(allowedBounds);
-							});
+							map.setZoom(minViewZoom);
+							zoomIn.classList.remove('disabled');
+							disableListener = false;
 						}, 3500);
 					}, 1250);
 				}
@@ -228,8 +227,8 @@ Template.mainLayout.rendered = function() {
 
 	// BOUNDARY CHECKING
 	var allowedBounds = new google.maps.LatLngBounds(
-		new google.maps.LatLng(35, -178),
-		new google.maps.LatLng(80, 10)
+		new google.maps.LatLng(35, -178), // SW
+		new google.maps.LatLng(80, 10) // NE
 	);
 	var boundLimits = {
 		maxLat: allowedBounds.getNorthEast().lat(),
@@ -242,20 +241,20 @@ Template.mainLayout.rendered = function() {
 		newLng;
 
 	zoomCheck = google.maps.event.addListener(map, 'zoom_changed', function() {
-	    checkBounds();
+		if (!disableListener) {
+			checkBounds();
+		}
 	});
 	boundsCheck = google.maps.event.addListener(map, 'bounds_changed', function() {
-	    checkBounds();
+	    if (!disableListener) {
+			checkBounds();
+		}
 	});
 	centerCheck = google.maps.event.addListener(map, 'center_changed', function() {
-		limitBounds(allowedBounds);
+		if (!disableListener) {
+			limitBounds(allowedBounds);
+		}
 	});
-
-	function stopChecks() {
-		google.maps.event.removeListener(zoomCheck);
-		google.maps.event.removeListener(boundsCheck);
-		google.maps.event.removeListener(centerCheck);
-	}
 
 	function checkBounds() {
 	    var currentBounds = map.getBounds();
