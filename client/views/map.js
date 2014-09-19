@@ -25,6 +25,8 @@ Template.mainLayout.rendered = function() {
 		centerLng = -105;
 	}
 	if (biggestScreen) {
+		centerLat = 69;
+		minViewZoom = 5;
 	}
 
 	var customMapType = new google.maps.ImageMapType({

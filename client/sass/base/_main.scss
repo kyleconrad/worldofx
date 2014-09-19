@@ -16,10 +16,22 @@
 	height: calc(100% - 40px);
 	margin-top: 40px;
 	position: relative;
+
+
+	@include breakpoint(xxlarge) {
+		height: calc(100% - 55px);
+		margin-top: 55px;
+	}
 }
 #map-controls {
 	position: absolute;
 	top: 1.25em;
 	top: calc(1.25em + 40px);
 	right: 1.25em;
+
+
+	@include breakpoint(xxlarge) {
+		font-size: 1.4rem;
+		top: calc(1.25em + 60px);
+	}
 }

@@ -8,6 +8,7 @@ nav {
 	height: 45px;
 	display: block;
 	padding: 10px 1.25em;
+	font-size: 1rem;
 
 	img {
 		height: 100%;
@@ -18,7 +19,18 @@ nav {
 	}
 
 
+	@include breakpoint(xxlarge) {
+		font-size: 1.4rem;
+		height: 60px;
+	}
+	@include breakpoint(large) {
+		font-size: 1.2rem;
+	}
+	@include breakpoint(portrait) {
+		font-size: 0.9rem;
+	}
 	@include breakpoint(mobile) {
+		font-size: 0.8rem;
 		background: black;
 	}
 }

@@ -25,11 +25,20 @@
 		text-align: center;
 		line-height: 18px;
 		content: '?';
+
+		@include breakpoint(xxlarge) {
+			line-height: 32px;
+		}
 	}
 
 	&:hover,
 	&:active {
 		opacity: 1;
+	}
+
+	@include breakpoint(xxlarge) {
+		height: 40px;
+		width: 40px;
 	}
 
 
@@ -46,6 +55,11 @@
 			background: white;
 			display: block;
 			@include transform-origin(center center);
+
+
+			@include breakpoint(xxlarge) {
+				width: 116%;
+			}
 		}
 		&:before {
 			@include transform(translate3d(-50%,-50%,0) rotate(45deg));
@@ -87,6 +101,12 @@
 			opacity: 0.3;
 		}
 	}
+
+
+	@include breakpoint(xxlarge) {
+		height: 40px;
+		width: 40px;
+	}
 }
 
 #map-zoomin {
@@ -101,6 +121,11 @@
 		@include transform-origin(center center);
 		@include transform(translate3d(-50%,-50%,0));
 		content: '';
+
+
+		@include breakpoint(xxlarge) {
+			height: 20px;
+		}
 	}
 }
 #map-zoomin,
@@ -116,5 +141,10 @@
 		@include transform-origin(center center);
 		@include transform(translate3d(-50%,-50%,0));
 		content: '';
+
+
+		@include breakpoint(xxlarge) {
+			width: 20px;
+		}
 	}
 }

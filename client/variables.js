@@ -6,4 +6,4 @@ isPhone = windowWidth <= 640;
 biggerThanPhone = windowWidth > 640;
 biggerThanPortrait = windowWidth > 768;
 biggerThanLandscape = windowWidth > 1024;
-biggestScreen = windowWidth > 1440;
+biggestScreen = windowWidth > 1800;
