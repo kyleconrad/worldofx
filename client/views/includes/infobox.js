@@ -1,5 +1,11 @@
 Template.infobox.events = {
-
+	'click #backlink': function (e) {
+		$('body').removeClass('infobox-open');
+		setTimeout(function(){
+			Router.go('/');
+		}, 1500);
+		e.preventDefault;
+	}
 };
 
 Template.infobox.helpers({
@@ -7,7 +13,6 @@ Template.infobox.helpers({
 });
 
 Template.infobox.rendered = function() {
-
 	$(function(){
 		Meteor.widowControl();
 

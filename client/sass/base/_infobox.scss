@@ -94,10 +94,10 @@
 	padding: 1.25em 2em;
 	margin: 1.25em 0;
 	width: 130%;
-	@include transform(skewX(-5deg) translate3d(5%,0,0));
+	@include transform(skewX(-5deg) translate3d(8%,0,0));
 	z-index: 500;
-	@include transition(1s);
-	@include transition-delay(0.5s);
+	@include transition(1.5s);
+	@include transition-delay(0.4s);
 
 	img {
 		@include transform(skewX(5deg) translate3d(0,0,0));
