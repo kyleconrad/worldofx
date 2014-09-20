@@ -9,7 +9,9 @@ Template.infobox.events = {
 };
 
 Template.infobox.helpers({
-
+	comics: function() {
+    	return Comics.find();
+  	}
 });
 
 Template.infobox.rendered = function() {

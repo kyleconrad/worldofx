@@ -171,7 +171,6 @@ Template.mainLayout.rendered = function() {
 			var currentZoomLevel = map.getZoom();
 
 			disableListener = true;
-			console.log(disableListener);
 			map.panTo(gMarker.position);
 
 			var interval,
