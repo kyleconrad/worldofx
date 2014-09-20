@@ -159,13 +159,13 @@
 // 	left: 50%;
 // 	width: 20%;
 // 	padding-bottom: 20%;
-// 	display: block;
 // 	border-radius: 100%;
 // 	@include transform-origin(center center);
 // 	@include transform(translate(-50%,-50%) rotate(45deg) scale(3));
 // 	@include transition(0);
 // 	@include transition-delay(0);
 // 	opacity: 0;
+// 	display: block;
 // 	border: 2px solid white;
 // 	-ms-pointer-events: none;
 // 	pointer-events: none;
@@ -197,10 +197,11 @@
 // 	}
 
 // 	&.zooming {
+// 		display: block;
 // 		opacity: 1;
 // 		@include transform(translate(-50%,-50%) rotate(45deg) scale(1));
-// 		@include transition-delay(z-index 0, opacity 0.1s, transform 0.1s);
-// 		@include transition(z-index 0, opacity 0.5s, transform 0.5s);
+// 		@include transition-delay(opacity 0.85s, transform 0.75s);
+// 		@include transition(opacity 0.5s, transform 0.3s);
 // 	}
 // }
 

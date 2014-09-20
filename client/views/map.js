@@ -180,8 +180,6 @@ Template.mainLayout.rendered = function() {
 			function mapZoomIn() {
 				map.setZoom(i);
 
-				$('#reticle').addClass('zooming');
-
 				if (i < maxViewZoom) i+=1;
 				else {
 					clearInterval(interval);
