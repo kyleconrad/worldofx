@@ -10,7 +10,7 @@
 	height: calc(100% - 45px);
 	@include transform(translate3d(100%,0,0));
 	@include transition(0.7s);
-	@include transition-delay(0.75s);
+	@include transition-delay(0.6s);
 
 	.infobox-open & {
 		@include transition(1.25s);
@@ -117,7 +117,7 @@
 	@include transform(skewX(-5deg) translate3d(8%,0,0));
 	z-index: 500;
 	@include transition(1.5s);
-	@include transition-delay(0.4s);
+	@include transition-delay(0.2s);
 
 	img {
 		@include transform(skewX(5deg) translate3d(0,0,0));
