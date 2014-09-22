@@ -21,6 +21,7 @@
 	@include breakpoint(xxlarge) {
 		height: calc(100% - 55px);
 		margin-top: 55px;
+		font-size: 1.4rem;
 	}
 }
 #map-controls {
@@ -33,5 +34,14 @@
 	@include breakpoint(xxlarge) {
 		font-size: 1.4rem;
 		top: calc(1.25em + 60px);
+	}
+	@include breakpoint(large) {
+		font-size: 1.2rem;
+	}
+	@include breakpoint(portrait) {
+		font-size: 0.9rem;
+	}
+	@include breakpoint(mobile) {
+		font-size: 0.8rem;
 	}
 }
