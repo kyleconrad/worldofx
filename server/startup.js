@@ -22,5 +22,11 @@ Meteor.startup(function () {
     	});
 
     	// console.log(comicsArray);
+    	var comicID = 3743,
+    		url = "http://gateway.marvel.com/v1/public/series/" + comicID,
+			date = new Date();
+			hash = CryptoJS.MD5(date + marvelPrivatekey + marvelPublickey).toString();
+
+		console.log();
     }
 });
