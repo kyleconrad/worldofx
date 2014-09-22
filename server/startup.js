@@ -32,9 +32,10 @@ Meteor.startup(function () {
 				apikey: marvelPublickey,
 				hash: hash }
 			});
-			var singleComic = result.data.data.results;
+			var singleComic = result.data.data.results[0];
 			
 			Comics.insert(singleComic);
+			// console.log(singleComic);
 		}
     }
 });

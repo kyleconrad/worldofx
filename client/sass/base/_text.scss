@@ -175,3 +175,17 @@ strong {
 		opacity: 1;
 	}
 }
+
+
+.series-link-text {
+	display: block;
+	text-decoration: none;
+	color: white;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: "tablet-gothic-condensed",sans-serif;
+	font-weight: 700;
+	font-size: 1em;
+	padding-left: 4px;
+	line-height: 1.2;
+}

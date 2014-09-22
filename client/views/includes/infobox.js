@@ -9,9 +9,26 @@ Template.infobox.events = {
 };
 
 Template.infobox.helpers({
-	// comics: function() {
- //    	return Comics.find();
- //  	}
+	singleSeries: function(series) {
+		var seriesSplit = series.split(',');
+		return seriesSplit;
+	},
+	comicURL: function() {
+    	var singleID = parseInt(this.valueOf());
+    	return Comics.findOne({id: singleID}).urls[0].url;
+  	},
+  	comicCover: function() {
+  		var singleID = parseInt(this.valueOf());
+  		// console.log(Comics.findOne({id: singleID}).thumbnail.path);
+  		console.log(Comics.findOne({id: singleID}).thumbnail.path + '.' + Comics.findOne({id: singleID}).thumbnail.extension);
+  		// return imageURL + '.' + extension;
+  		// console.log(imageURL + '.' + extension);
+  		return Comics.findOne({id: singleID}).thumbnail.path + '.' + Comics.findOne({id: singleID}).thumbnail.extension;
+  	},
+  	comicTitle: function() {
+  		var singleID = parseInt(this.valueOf());
+  		return Comics.findOne({id: singleID}).title;
+  	}
 });
 
 Template.infobox.rendered = function() {

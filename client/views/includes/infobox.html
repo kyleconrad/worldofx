@@ -16,6 +16,13 @@
 				<div class="series-listing">
 					<h4>Related Series</h4>
 
+					{{#each singleSeries series}}
+						<a href="{{comicURL}}" target="_blank" class="series-link">
+							<img src="{{comicCover}}">
+							<span class="series-link-text">{{comicTitle}}</span>
+						</a>
+					{{/each}}
+
 					<div class="series-listing-slant"></div>
 				</div>
 			</div>
