@@ -31,6 +31,9 @@ Template.infobox.rendered = function() {
 	$(function(){
 		Meteor.widowControl();
 
+		if (biggerThanPhone) {
+			$('.series-link').css('height','auto').equalHeights();
+		}
 		if (!isMobile) {
 			$('.location-info').nanoScroller({
 				contentClass: 'scroll-container',
