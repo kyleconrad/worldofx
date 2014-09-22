@@ -21,12 +21,20 @@ Meteor.startup(function () {
       		}
     	});
 
-    	// console.log(comicsArray);
-    	var comicID = 3743,
-    		url = "http://gateway.marvel.com/v1/public/series/" + comicID,
-			date = new Date();
-			hash = CryptoJS.MD5(date + marvelPrivatekey + marvelPublickey).toString();
+		for (var i=0; i < comicsArray.length; i++){
+	    	var comicID = comicsArray[i],
+	    		url = "http://gateway.marvel.com/v1/public/series/" + comicID,
+				date = new Date();
+				hash = CryptoJS.MD5(date + marvelPrivatekey + marvelPublickey).toString();
 
-		console.log();
+			var result = HTTP.get(url, {params:{
+				ts: date,
+				apikey: marvelPublickey,
+				hash: hash }
+			});
+			var singleComic = result.data.data.results;
+			
+			Comics.insert(singleComic);
+		}
     }
 });
