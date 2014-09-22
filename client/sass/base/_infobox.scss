@@ -189,11 +189,20 @@
 		margin-right: 0;
 	}
 
-	img {
-		border: 3px solid rgba($red,0.5);
+	.series-link-image {
+		display: block;
+		border: 3px solid $red-darkest;
 		@include transition(0.15s);
 		margin-bottom: 0.5em;
+		width: 100%;
+		padding-bottom: 100%;
+		background-color: $red-darkest;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center top;
+		@include transform(translate3d(0,0,0));
 	}
+
 	.series-link-text {
 		opacity: 0.6;
 		@include transition(0.15s);
@@ -201,7 +210,7 @@
 
 	&:hover,
 	&:active {
-		img {
+		.series-link-image {
 			border-color: $red;
 		}
 		.series-link-text {

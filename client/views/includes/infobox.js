@@ -19,10 +19,6 @@ Template.infobox.helpers({
   	},
   	comicCover: function() {
   		var singleID = parseInt(this.valueOf());
-  		// console.log(Comics.findOne({id: singleID}).thumbnail.path);
-  		console.log(Comics.findOne({id: singleID}).thumbnail.path + '.' + Comics.findOne({id: singleID}).thumbnail.extension);
-  		// return imageURL + '.' + extension;
-  		// console.log(imageURL + '.' + extension);
   		return Comics.findOne({id: singleID}).thumbnail.path + '.' + Comics.findOne({id: singleID}).thumbnail.extension;
   	},
   	comicTitle: function() {
