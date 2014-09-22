@@ -35,7 +35,6 @@ Meteor.startup(function () {
 			var singleComic = result.data.data.results[0];
 			
 			Comics.insert(singleComic);
-			// console.log(singleComic);
 		}
     }
 });
