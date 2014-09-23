@@ -331,8 +331,47 @@ Template.mainLayout.rendered = function() {
 
 
 	$(function(){
+		$('#map-fullscreen').on('click', function(){
+			if ($(this).hasClass('active')) {
+				var currentZoomLevel = map.getZoom();
+
+				if (!biggestScreen) {
+					minViewZoom = 4;
+				}
+				if (!biggestScreen && currentZoomLevel === 5) {
+					map.setZoom(4);
+				}
+
+				exitFullscreen();
+				$(this).removeClass('active');
+			}
+			else {
+				var currentZoomLevel = map.getZoom();
+
+				if (currentZoomLevel < 5) {
+					map.setZoom(5);
+					minViewZoom = 5;
+					zoomOut.classList.add('disabled');
+				}
+
+				launchIntoFullscreen(document.documentElement);
+				$(this).addClass('active');
+			}
+		});
+		function launchIntoFullscreen(element) {
+			if(element.requestFullscreen) element.requestFullscreen();
+			else if(element.mozRequestFullScreen) element.mozRequestFullScreen();
+			else if(element.webkitRequestFullscreen) element.webkitRequestFullscreen();
+			else if(element.msRequestFullscreen) element.msRequestFullscreen();
+		}
+		function exitFullscreen() {
+			if(document.exitFullscreen) document.exitFullscreen();
+			else if(document.mozCancelFullScreen)	document.mozCancelFullScreen();
+			else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
+		}
+
 		if (isMobile) {
-			$('#blam').remove();
+			$('#blam, #fullscreen').remove();
 		}
 		var kkeys = [],
 			blam = "38,38,40,40,37,39,37,39,66,65";

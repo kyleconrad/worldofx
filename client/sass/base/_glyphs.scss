@@ -48,18 +48,13 @@
 		&:before,
 		&:after {
 			position: absolute;
-			width: 120%;
+			width: 100%;
 			height: 2px;
 			top: 50%;
 			left: 50%;
 			background: white;
 			display: block;
 			@include transform-origin(center center);
-
-
-			@include breakpoint(xxlarge) {
-				width: 116%;
-			}
 		}
 		&:before {
 			@include transform(translate3d(-50%,-50%,0) rotate(45deg));
@@ -109,6 +104,66 @@
 	}
 }
 
+#map-fullscreen {
+	position: absolute;
+	bottom: 1.25em;
+	right: 1.25em;
+
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 14px;
+		height: 10px;
+		border: 2px solid white;
+		display: block;
+		@include transform-origin(center center);
+		@include transform(translate3d(-50%,-50%,0));
+		content: '';
+
+
+		@include breakpoint(xxlarge) {
+			width: 24px;
+			height: 18px;
+		}
+	}
+
+	&.active {
+		&:before,
+		&:after {
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			top: 50%;
+			left: 50%;
+			background: white;
+			display: block;
+			@include transform-origin(center center);
+		}
+		&:before {
+			@include transform(translate3d(-50%,-50%,0) rotate(45deg));
+			content: '';
+		}
+		&:after {
+			@include transform(translate3d(-50%,-50%,0) rotate(-45deg));
+			content: '';
+		}
+	}
+
+
+	@include breakpoint(xxlarge) {
+		font-size: 1.4rem;
+	}
+	@include breakpoint(large) {
+		font-size: 1.2rem;
+	}
+	@include breakpoint(portrait) {
+		font-size: 0.9rem;
+	}
+	@include breakpoint(mobile) {
+		font-size: 0.8rem;
+	}
+}
 #map-zoomin {
 	&:before {
 		position: absolute;
