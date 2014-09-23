@@ -14,6 +14,8 @@ deps@1.0.3
 ejson@1.0.2
 fastclick@1.0.0
 follower-livedata@1.0.1
+gadicohen:robots-txt@0.0.8
+gadicohen:sitemaps@0.0.18
 geojson-utils@1.0.0
 html-tools@1.0.0
 htmljs@1.0.1
