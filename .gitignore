@@ -5,3 +5,4 @@ server/marvelkeys.js
 .deploy
 .deploy/mup.json
 .deploy/settings.json
+worldofx.tar.gz
