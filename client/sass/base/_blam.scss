@@ -1,6 +1,26 @@
 /* BLAM */
 #blam {
 	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: none;
+	@include transition-delay(0.75s);
+
+	&.chimichanga {
+		background-image: url('http://cdn.world-of-x.com/img/taco.gif');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		@include transition-delay(0s);
+	}
+}
+
+#surprise {
+	position: absolute;
 	bottom: 0;
 	left: 35%;
 	width: 50%;
@@ -12,7 +32,8 @@
 	@include transform(translate3d(0,100%,0));
 	@include transition(transform 0.25s cubic-bezier(0.210, 0.355, 1.000, 0.090));
 
-	&.chimichanga {
+	.chimichanga & {
+		@include transition-delay(0.5s);
 		@include transform(translate3d(0,0,0));
 	}
 }

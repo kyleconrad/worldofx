@@ -1,7 +1,4 @@
 /* Z-INDEX SETTINGS */
-#blam {
-	z-index: 999;
-}
 #mainloader {
 	z-index: 990;
 }
@@ -33,6 +30,14 @@ nav {
 #map-controls {
 	z-index: 10;
 }
-#reticle {
-	z-index: 15;
+// #reticle {
+// 	z-index: 15;
+// }
+
+#blam {
+	z-index: -1;
+
+	&.chimichanga {
+		z-index: 999;
+	}
 }

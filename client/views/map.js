@@ -331,6 +331,9 @@ Template.mainLayout.rendered = function() {
 
 
 	$(function(){
+		if (isMobile) {
+			$('#blam').remove();
+		}
 		var kkeys = [],
 			blam = "38,38,40,40,37,39,37,39,66,65";
 		$(document).keydown(function(e) {
@@ -341,10 +344,10 @@ Template.mainLayout.rendered = function() {
 
 				setTimeout(function(){
 					$('#blam').removeClass('chimichanga');
-				},1500);
+				},3000);
 				setTimeout(function(){
 					$('#blam').remove();
-				},1750);
+				},3750);
 			}
 		});
 	});
