@@ -18,6 +18,8 @@ Template.mainLayout.rendered = function() {
 	var disableListener = false;
 
 	if (isPhone) {
+		centerLat = 72;
+		centerLng = -125;
 	}
 	if (biggerThanPhone && !biggerThanPortrait) {
 		centerLng = -110;
@@ -326,6 +328,26 @@ Template.mainLayout.rendered = function() {
 
 		map.panTo(lastValidCenter);
 	}
+
+
+	$(function(){
+		var kkeys = [],
+			blam = "38,38,40,40,37,39,37,39,66,65";
+		$(document).keydown(function(e) {
+			kkeys.push( e.keyCode );
+			if (kkeys.toString().indexOf(blam) >= 0) {
+				$(document).unbind('keydown',arguments.callee);
+				$('#blam').addClass('chimichanga');
+
+				setTimeout(function(){
+					$('#blam').removeClass('chimichanga');
+				},1500);
+				setTimeout(function(){
+					$('#blam').remove();
+				},1750);
+			}
+		});
+	});
 };
 
 

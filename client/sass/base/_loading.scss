@@ -1,1 +1,188 @@
 /* LOADER */
+#mainloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: $red;
+	background-image: url('http://cdn.world-of-x.com/img/loading.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: 1;
+
+	&.completed {
+		opacity: 0;
+		@include transition(0.4s);
+		-ms-pointer-events: none;
+		pointer-events: none;
+	}
+	&.hidden {
+		display: none;
+	}
+
+
+
+	@include breakpoint(xxlarge) {
+		background-image: url('http://cdn.world-of-x.com/img/loading_large.jpg');
+	}
+	@include breakpoint(large) {
+		background-image: url('http://cdn.world-of-x.com/img/loading_large.jpg');
+	}
+	@include breakpoint(portrait) {
+		background-image: url('http://cdn.world-of-x.com/img/loading_portrait.jpg');
+	}
+	@include breakpoint(mobile) {
+		background-image: url('http://cdn.world-of-x.com/img/loading_phone.jpg');
+		background-position: left bottom;
+	}
+}
+
+
+#svg-container {
+	display: block;
+	width: 10%;
+	height: 0;
+	padding-bottom: 10%;
+	margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	@include transform(translate3d(-50%,-55%,0));
+
+	svg {
+		width: 100%;
+		max-height:100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+	}
+}
+.circle-fill {
+	fill: white;
+}
+
+
+
+
+#logo-fulllogo {
+	opacity: 0;
+
+	@include animation(logo-fulllogo-fill 0.1s linear 1);
+	@include animation-fill-mode(forwards);
+	@include animation-delay(2.4s);
+}
+
+#logo-leftslash,
+#logo-rightslash {
+	@include transform-origin(194px, 0);
+}
+#logo-leftslash {
+	@include transform(rotate(-45deg) translate3d(0, 330px, 0));
+
+	@include animation(logo-leftslash-fill 1s linear 1);
+	@include animation-fill-mode(forwards);
+	@include animation-delay(1.5s);
+}
+#logo-rightslash {
+	@include transform(rotate(45deg) translate3d(0, 330px, 0));
+
+	@include animation(logo-rightslash-fill 1s linear 1);
+	@include animation-fill-mode(forwards);
+	@include animation-delay(1.5s);
+}
+
+#logo-circle-right-top,
+#logo-circle-right-bottom {
+	@include transform-origin(194px, 194px);
+	@include transform(rotate(92deg) translate3d(0, 0, 0));
+}
+#logo-circle-right-bottom {
+	@include animation(logo-rightcircle-fill 0.6s linear 1);
+	@include animation-fill-mode(forwards);
+	@include animation-delay(1.2s);
+}
+#logo-circle-right-top {
+	@include animation(logo-rightcircle-fill-full 1.2s linear 1);
+	@include animation-fill-mode(forwards);
+	@include animation-delay(1.2s);
+}
+
+#logo-circle-left-top,
+#logo-circle-left-bottom {
+	@include transform-origin(194px, 194px);
+	@include transform(rotate(-92deg) translate3d(0, 0, 0));
+}
+#logo-circle-left-bottom {
+	@include animation(logo-leftcircle-fill 0.6s linear 1);
+	@include animation-fill-mode(forwards);
+	@include animation-delay(1.2s);
+}
+#logo-circle-left-top {
+	@include animation(logo-leftcircle-fill-full 1.2s linear 1);
+	@include animation-fill-mode(forwards);
+	@include animation-delay(1.2s);
+}
+
+
+
+@include keyframes(logo-fulllogo-fill) {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@include keyframes(logo-leftslash-fill) {
+	from {
+		@include transform(rotate(-45deg) translate3d(0, 330px, 0));
+	}
+	to {
+		@include transform(rotate(-45deg) translate3d(0, 0, 0));
+	}
+}
+@include keyframes(logo-rightslash-fill) {
+	from {
+		@include transform(rotate(45deg) translate3d(0, 330px, 0));
+	}
+	to {
+		@include transform(rotate(45deg) translate3d(0, 0, 0));
+	}
+}
+
+@include keyframes(logo-rightcircle-fill) {
+	from {
+		@include transform(rotate(92deg) translate3d(0, 0, 0));
+	}
+	to {
+		@include transform(rotate(0deg) translate3d(0, 0, 0));
+	}
+}
+@include keyframes(logo-rightcircle-fill-full) {
+	from {
+		@include transform(rotate(92deg) translate3d(0, 0, 0));
+	}
+	to {
+		@include transform(rotate(-90deg) translate3d(0, 0, 0));
+	}
+}
+
+@include keyframes(logo-leftcircle-fill) {
+	from {
+		@include transform(rotate(-92deg) translate3d(0, 0, 0));
+	}
+	to {
+		@include transform(rotate(0deg) translate3d(0, 0, 0));
+	}
+}
+@include keyframes(logo-leftcircle-fill-full) {
+	from {
+		@include transform(rotate(-92deg) translate3d(0, 0, 0));
+	}
+	to {
+		@include transform(rotate(91deg) translate3d(0, 0, 0));
+	}
+}

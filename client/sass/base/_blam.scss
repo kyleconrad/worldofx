@@ -1,0 +1,18 @@
+/* BLAM */
+#blam {
+	position: fixed;
+	bottom: 0;
+	left: 35%;
+	width: 50%;
+	height: 85%;
+	background-image: url('http://cdn.world-of-x.com/img/blam.png');
+	background-size: 100% auto;
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	@include transform(translate3d(0,100%,0));
+	@include transition(transform 0.25s cubic-bezier(0.210, 0.355, 1.000, 0.090));
+
+	&.chimichanga {
+		@include transform(translate3d(0,0,0));
+	}
+}

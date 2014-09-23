@@ -22,6 +22,14 @@
 		height: calc(100% - 60px);
 		top: 60px;
 	}
+	@include breakpoint(portrait) {
+		@include transform(translate3d(0,100%,0));
+		overflow-y: scroll;
+	}
+	@include breakpoint(mobile) {
+		@include transform(translate3d(0,100%,0));
+		overflow-y: scroll;
+	}
 }
 
 .location-image,
@@ -29,6 +37,18 @@
 	position: absolute;
 	height: 100%;
 	bottom: 0;
+
+
+	@include breakpoint(portrait) {
+		width: 100%;
+		bottom: auto;
+		position: relative;
+	}
+	@include breakpoint(mobile) {
+		width: 100%;
+		bottom: auto;
+		position: relative;
+	}
 }
 .location-image {
 	left: 0;
@@ -44,6 +64,31 @@
 		@include transition(1s);
 		@include transition-delay(1.3s);
 		opacity: 1;
+	}
+
+	&[data-slug="outback"] {
+		background-position: right top;
+	}
+	&[data-slug="wakanda"] {
+		background-position: center bottom;
+	}
+	&[data-slug="excalibur"] {
+		background-position: right bottom;
+	}
+	&[data-slug="jasmine"] {
+		background-position: left top;
+	}
+
+
+	@include breakpoint(portrait) {
+		width: 100%;
+		left: auto;
+		height: 40em;
+	}
+	@include breakpoint(mobile) {
+		width: 100%;
+		left: auto;
+		height: 70%;
 	}
 }
 .location-info {
@@ -69,6 +114,9 @@
 		@include breakpoint(landscape) {
 			width: 15%;
 		}
+		@include breakpoint(portrait) {
+			display: none;
+		}
 	}
 
 
@@ -80,6 +128,18 @@
 	}
 	@include breakpoint(landscape) {
 		font-size: 0.9rem;
+	}
+	@include breakpoint(portrait) {
+		right: auto;
+		width: 100%;
+		max-width: 100%;
+		font-size: 0.9rem;
+	}
+	@include breakpoint(mobile) {
+		right: auto;
+		width: 100%;
+		max-width: 100%;
+		font-size: 0.8rem;
 	}
 }
 
@@ -104,6 +164,30 @@
 	html[data-useragent*='Firefox'] & {
 		width: calc(130% + 15px);
 	}
+
+
+	@include breakpoint(portrait) {
+		overflow-y: visible;
+		position: relative;
+		top: auto;
+		right: auto;
+		height: auto;
+		width: 100%;
+		max-width: 100%;
+		background: white;
+		padding: 1.5em 2em 0 2em;
+	}
+	@include breakpoint(mobile) {
+		overflow-y: visible;
+		position: relative;
+		top: auto;
+		right: auto;
+		height: auto;
+		width: 100%;
+		max-width: 100%;
+		background: white;
+		padding: 1.5em 2em 0 2em;
+	}
 }
 
 
@@ -121,6 +205,14 @@
 
 	img {
 		@include transform(skewX(5deg) translate3d(0,0,0));
+
+
+		@include breakpoint(portrait) {
+			@include transform(translate3d(0,0,0));
+		}
+		@include breakpoint(mobile) {
+			@include transform(translate3d(0,0,0));
+		}
 	}
 
 	.infobox-open & {
@@ -132,6 +224,22 @@
 		@include breakpoint(large) {
 			@include transform(skewX(-5deg) translate3d(-9%,0,0));
 		}
+		@include breakpoint(portrait) {
+			@include transform(translate3d(-2.1em,0,0));
+		}
+		@include breakpoint(mobile) {
+			@include transform(translate3d(-2.1em,0,0));
+		}
+	}
+
+
+	@include breakpoint(portrait) {
+		width: calc(100% + 4.2em);
+		@include transform(translate3d(-2.1em,20px,0));
+	}
+	@include breakpoint(mobile) {
+		width: calc(100% + 4.2em);
+		@include transform(translate3d(-2.1em,20px,0));
 	}
 }
 
@@ -167,12 +275,32 @@
 		background: black;
 		z-index: -1;
 		@include transform(skewX(-5deg) translate3d(-20%,0,0));
+
+
+		@include breakpoint(portrait) {
+			display: none;
+		}
+		@include breakpoint(mobile) {
+			display: none;
+		}
 	}
 
 
 	@include breakpoint(landscape) {
 		width: 130%;
 		@include transform(translate3d(-7%,0,0));
+	}
+	@include breakpoint(portrait) {
+		padding-left: 2.1em;
+		padding-right: 2.1em;
+		width: calc(100% + 4.2em);
+		@include transform(translate3d(-2.1em,0,0));
+	}
+	@include breakpoint(mobile) {
+		padding-left: 2.1em;
+		padding-right: 2.1em;
+		width: calc(100% + 4.2em);
+		@include transform(translate3d(-2.1em,0,0));
 	}
 }
 .series-link {
@@ -216,5 +344,12 @@
 		.series-link-text {
 			opacity: 1;
 		}
+	}
+
+
+	@include breakpoint(mobile) {
+		width: 100%;
+		margin-right: 0;
+		padding-bottom: 2em;
 	}
 }

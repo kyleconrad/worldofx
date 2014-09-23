@@ -1,0 +1,51 @@
+<template name="mainLoader">
+	<div id="mainloader">
+		<div id="svg-container">
+			<svg preserveAspectRatio="xMinYMin slice" viewBox="0 0 388 388" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			    <defs>
+			    	<clipPath id="full-logo">
+			    		<path d="M89.202,343.531 L43.24,297.568 L297.091,43.718 L343.053,89.681 L89.202,343.531"></path>
+			    		<path d="M297.091,344.239 L43.24,90.388 L89.202,44.425 L343.053,298.276 L297.091,344.239"></path>
+			    		<path d="M193.434,62.488 C228.556,62.488 261.576,76.165 286.411,101 C311.247,125.836 324.924,158.856 324.924,193.978 C324.924,229.101 311.247,262.12 286.411,286.956 C261.576,311.791 228.556,325.468 193.434,325.468 C158.311,325.468 125.291,311.791 100.456,286.956 C75.621,262.12 61.943,229.101 61.943,193.978 C61.943,158.856 75.621,125.836 100.456,101 C125.291,76.165 158.311,62.488 193.434,62.488 M193.434,0.488 C86.572,0.488 -0.057,87.116 -0.057,193.978 C-0.057,300.84 86.572,387.468 193.434,387.468 C300.295,387.468 386.924,300.84 386.924,193.978 C386.924,87.116 300.295,0.488 193.434,0.488"></path>
+			    	</clipPath>
+			    	<clipPath id="left-circle">
+			    		<rect x="0" y="0" width="195" height="388"></rect>
+			    	</clipPath>
+			    	<clipPath id="right-circle">
+			    		<rect x="193" y="0" width="195" height="388"></rect>
+			    	</clipPath>
+			    	<clipPath id="left-outer-circle-clip">
+			    		<path clip-path="url(#left-circle)" d="M193.434,62.488 C228.556,62.488 261.576,76.165 286.411,101 C311.247,125.836 324.924,158.856 324.924,193.978 C324.924,229.101 311.247,262.12 286.411,286.956 C261.576,311.791 228.556,325.468 193.434,325.468 C158.311,325.468 125.291,311.791 100.456,286.956 C75.621,262.12 61.943,229.101 61.943,193.978 C61.943,158.856 75.621,125.836 100.456,101 C125.291,76.165 158.311,62.488 193.434,62.488 M193.434,0.488 C86.572,0.488 -0.057,87.116 -0.057,193.978 C-0.057,300.84 86.572,387.468 193.434,387.468 C300.295,387.468 386.924,300.84 386.924,193.978 C386.924,87.116 300.295,0.488 193.434,0.488"></path>
+			    	</clipPath>
+			    	<clipPath id="right-outer-circle-clip">
+			    		<path clip-path="url(#right-circle)" d="M193.434,62.488 C228.556,62.488 261.576,76.165 286.411,101 C311.247,125.836 324.924,158.856 324.924,193.978 C324.924,229.101 311.247,262.12 286.411,286.956 C261.576,311.791 228.556,325.468 193.434,325.468 C158.311,325.468 125.291,311.791 100.456,286.956 C75.621,262.12 61.943,229.101 61.943,193.978 C61.943,158.856 75.621,125.836 100.456,101 C125.291,76.165 158.311,62.488 193.434,62.488 M193.434,0.488 C86.572,0.488 -0.057,87.116 -0.057,193.978 C-0.057,300.84 86.572,387.468 193.434,387.468 C300.295,387.468 386.924,300.84 386.924,193.978 C386.924,87.116 300.295,0.488 193.434,0.488"></path>
+			    	</clipPath>
+			    	<clipPath id="leftslash-clip">
+			    		<path d="M297.091,344.239 L43.24,90.388 L89.202,44.425 L343.053,298.276 L297.091,344.239"></path>
+			    	</clipPath>
+			    	<clipPath id="rightslash-clip">
+			    		<path d="M89.202,343.531 L43.24,297.568 L297.091,43.718 L343.053,89.681 L89.202,343.531"></path>
+			    	</clipPath>
+			    </defs>
+
+		        <g clip-path="url(#left-outer-circle-clip)">
+		        	<rect id="logo-circle-left-bottom" class="circle-fill" x="0" y="194" width="300" height="300"></rect>
+		        	<rect id="logo-circle-left-top" class="circle-fill" x="0" y="194" width="300" height="300"></rect>
+		        </g>
+		        <g clip-path="url(#right-outer-circle-clip)">
+		        	<rect id="logo-circle-right-bottom" class="circle-fill" x="192" y="194" width="300" height="300"></rect>
+		        	<rect id="logo-circle-right-top" class="circle-fill" x="192" y="194" width="300" height="300"></rect>
+		        </g>
+		        <g clip-path="url(#leftslash-clip)">
+		        	<rect id="logo-leftslash" class="circle-fill" x="0" y="0" width="388" height="388"></rect>
+		        </g>
+		        <g clip-path="url(#rightslash-clip)">
+		        	<rect id="logo-rightslash" class="circle-fill" x="0" y="0" width="388" height="388"></rect>
+		        </g>
+		        <g clip-path="url(#full-logo)">
+		        	<rect id="logo-fulllogo" class="circle-fill" x="0" y="0" width="388" height="388"></rect>
+		        </g>
+			</svg>
+		</div>
+	</div>
+</template>

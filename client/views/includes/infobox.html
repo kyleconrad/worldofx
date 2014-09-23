@@ -1,14 +1,14 @@
 <template name="infobox">
 	<section id="infobox">
-		<div class="location-image" style="background-image: url('img/locations/{{slug}}.jpg');"></div>
+		<div class="location-image" style="background-image: url('http://cdn.world-of-x.com/img/locations/{{slug}}.jpg');" data-slug="{{slug}}"></div>
 
 		<div class="location-info">
 			<div class="scroll-container">
 				<a href="#" id="backlink" class="backlink home-link">Back To Map</a>
 
 				<span class="location-title">
-					<h1><img src="img/titles/title-{{slug}}.svg" class="title-image" alt="{{title}}"></h1>
-					<h2><img src="img/titles/location-{{slug}}.svg" class="subtitle-image" alt="{{subtitle}}"></h2>
+					<h1><img src="http://cdn.world-of-x.com/img/titles/title-{{slug}}.svg" class="title-image" alt="{{title}}"></h1>
+					<h2><img src="http://cdn.world-of-x.com/img/titles/location-{{slug}}.svg" class="subtitle-image" alt="{{subtitle}}"></h2>
 				</span>
 
 				{{{content}}}
