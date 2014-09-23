@@ -12,4 +12,5 @@ http
 jparker:crypto-md5
 spiderable
 gadicohen:sitemaps
+disable-oplog
 

@@ -11,6 +11,7 @@ ctl-helper@1.0.3
 ctl@1.0.1
 ddp@1.0.8
 deps@1.0.3
+disable-oplog@1.0.0
 ejson@1.0.2
 fastclick@1.0.0
 follower-livedata@1.0.1
