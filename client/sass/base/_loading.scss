@@ -59,6 +59,20 @@
 		left: 0;
 		display: block;
 	}
+
+
+	@include breakpoint(landscape) {
+		width: 15%;
+		padding-bottom: 15%;
+	}
+	@include breakpoint(portrait) {
+		width: 20%;
+		padding-bottom: 20%;
+	}
+	@include breakpoint(mobile) {
+		width: 30%;
+		padding-bottom: 30%;
+	}
 }
 .circle-fill {
 	fill: white;

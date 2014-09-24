@@ -86,6 +86,10 @@ strong {
 		color: white;
 		max-width: 100%;
 	}
+
+	.mobile & {
+		display: none;
+	}
 }
 
 

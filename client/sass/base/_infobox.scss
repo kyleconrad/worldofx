@@ -24,11 +24,13 @@
 	}
 	@include breakpoint(portrait) {
 		@include transform(translate3d(0,100%,0));
-		overflow-y: scroll;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 	}
 	@include breakpoint(mobile) {
 		@include transform(translate3d(0,100%,0));
-		overflow-y: scroll;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 	}
 }
 
@@ -88,7 +90,7 @@
 	@include breakpoint(mobile) {
 		width: 100%;
 		left: auto;
-		height: 70%;
+		height: 50%;
 	}
 }
 .location-info {
@@ -127,7 +129,7 @@
 		font-size: 1.2rem;
 	}
 	@include breakpoint(landscape) {
-		font-size: 0.9rem;
+		font-size: 1rem;
 	}
 	@include breakpoint(portrait) {
 		right: auto;
@@ -166,6 +168,10 @@
 	}
 
 
+	@include breakpoint(landscape) {
+		padding-left: 33%;
+		padding-right: 3em;
+	}
 	@include breakpoint(portrait) {
 		overflow-y: visible;
 		position: relative;
@@ -288,7 +294,7 @@
 
 	@include breakpoint(landscape) {
 		width: 130%;
-		@include transform(translate3d(-7%,0,0));
+		@include transform(translate3d(-11%,0,0));
 	}
 	@include breakpoint(portrait) {
 		padding-left: 2.1em;

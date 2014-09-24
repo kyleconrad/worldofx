@@ -18,8 +18,10 @@ Template.mainLayout.rendered = function() {
 	var disableListener = false;
 
 	if (isPhone) {
-		centerLat = 72;
-		centerLng = -125;
+		alert('phone');
+		minViewZoom = 3;
+		centerLat = 70;
+		centerLng = -120;
 	}
 	if (biggerThanPhone && !biggerThanPortrait) {
 		centerLng = -110;
@@ -370,9 +372,6 @@ Template.mainLayout.rendered = function() {
 			else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
 		}
 
-		if (isMobile) {
-			$('#blam, #fullscreen').remove();
-		}
 		var kkeys = [],
 			blam = "38,38,40,40,37,39,37,39,66,65";
 		$(document).keydown(function(e) {
