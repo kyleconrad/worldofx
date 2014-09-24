@@ -33,6 +33,8 @@ Template.mainLayout.rendered = function() {
 		centerLng = -120;
 	}
 
+	var mapCenter = new google.maps.LatLng(centerLat, centerLng);
+
 	var customMapType = new google.maps.ImageMapType({
 		getTileUrl: function(coord, zoom) {
 			var normalizedCoord = getNormalizedCoord(coord, zoom);
@@ -48,7 +50,7 @@ Template.mainLayout.rendered = function() {
 	});
 
 	var myOptions = {
-		center: new google.maps.LatLng(centerLat, centerLng),
+		center: mapCenter,
 		zoom: minViewZoom,
 		minZoom: minViewZoom,
 		maxZoom: maxViewZoom,
@@ -180,9 +182,11 @@ Template.mainLayout.rendered = function() {
 				Router.go('/' + gMarker.id);
 
 				setTimeout(function(){
+					map.panTo(mapCenter);
+					map.setZoom(minViewZoom);
 					disableListener = false;
-				}, 3500);
-			}, 1250);
+				}, 3000);
+			}, 800);
 
 			// var interval,
 			// 	i = currentZoomLevel + 1;
