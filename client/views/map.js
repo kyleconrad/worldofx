@@ -176,28 +176,36 @@ Template.mainLayout.rendered = function() {
 			disableListener = true;
 			map.panTo(gMarker.position);
 
-			var interval,
-				i = currentZoomLevel + 1;
+			setTimeout(function(){
+				Router.go('/' + gMarker.id);
 
-			function mapZoomIn() {
-				map.setZoom(i);
+				setTimeout(function(){
+					disableListener = false;
+				}, 3500);
+			}, 1250);
 
-				if (i < maxViewZoom) i+=1;
-				else {
-					clearInterval(interval);
+			// var interval,
+			// 	i = currentZoomLevel + 1;
 
-					setTimeout(function(){
-						Router.go('/' + gMarker.id);
+			// function mapZoomIn() {
+			// 	map.setZoom(i);
 
-						setTimeout(function(){
-							map.setZoom(minViewZoom);
-							zoomIn.classList.remove('disabled');
-							disableListener = false;
-						}, 3500);
-					}, 1250);
-				}
-			}
-			interval = setInterval(mapZoomIn, 750);
+			// 	if (i < maxViewZoom) i+=1;
+			// 	else {
+			// 		clearInterval(interval);
+
+			// 		setTimeout(function(){
+			// 			Router.go('/' + gMarker.id);
+
+			// 			setTimeout(function(){
+			// 				map.setZoom(minViewZoom);
+			// 				zoomIn.classList.remove('disabled');
+			// 				disableListener = false;
+			// 			}, 3500);
+			// 		}, 1250);
+			// 	}
+			// }
+			// interval = setInterval(mapZoomIn, 750);
 		});
 		google.maps.event.addListener(gMarker, 'mouseover', function() {
 			// DO STUFF ON HOVER
