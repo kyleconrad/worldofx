@@ -17,21 +17,20 @@ Template.mainLayout.rendered = function() {
 		markerData = [];
 	var disableListener = false;
 
-	if (isPhone) {
-		alert('phone');
-		minViewZoom = 3;
-		centerLat = 70;
-		centerLng = -120;
-	}
-	if (biggerThanPhone && !biggerThanPortrait) {
-		centerLng = -110;
+	if (biggestScreen) {
+		centerLat = 69;
+		minViewZoom = 5;
 	}
 	if (biggerThanPortrait && !biggerThanLandscape) {
 		centerLng = -105;
 	}
-	if (biggestScreen) {
-		centerLat = 69;
-		minViewZoom = 5;
+	if (biggerThanPhone && !biggerThanPortrait) {
+		centerLng = -120;
+	}
+	if (isPhone) {
+		minViewZoom = 3;
+		centerLat = 70;
+		centerLng = -120;
 	}
 
 	var customMapType = new google.maps.ImageMapType({
